@@ -1,0 +1,72 @@
+C51 COMPILER V9.60.7.0   KEY                                                               12/28/2022 20:14:58 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE KEY
+OBJECT MODULE PLACED IN .\Objects\key.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE key.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\key.l
+                    -st) TABS(2) OBJECT(.\Objects\key.obj)
+
+line level    source
+
+   1          // File Name: key.c
+   2          // Author: Tanaka Hao
+   3          // Description: functions about keys.
+   4          // Date: 22.12.28
+   5          
+   6          #include "key.h"
+   7          #include "types.h"
+   8          
+   9          sbit BUT1 = P3^1;
+  10          sbit BUT2 = P3^0;
+  11          
+  12          bit scanButton1()
+  13          {
+  14   1        static uchar press_time=0;
+  15   1        if (BUT1==0)
+  16   1        {
+  17   2          if (++press_time<=0) --press_time;
+  18   2          if (press_time==2)
+  19   2          {
+  20   3            return 1;
+  21   3          }
+  22   2        }
+  23   1        else
+  24   1        {
+  25   2          press_time=0;
+  26   2        }
+  27   1        return 0;
+  28   1      }
+  29          
+  30          bit scanButton2()
+  31          {
+  32   1        static uchar press_time=0;
+  33   1        if (BUT2==0)
+  34   1        {
+  35   2          if (++press_time<=0) --press_time;
+  36   2          if (press_time==2)
+  37   2          {
+  38   3            return 1;
+  39   3          }
+  40   2        }
+  41   1        else
+  42   1        {
+  43   2          press_time=0;
+  44   2        }
+  45   1        return 0;
+  46   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     52    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+C51 COMPILER V9.60.7.0   KEY                                                               12/28/2022 20:14:58 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
